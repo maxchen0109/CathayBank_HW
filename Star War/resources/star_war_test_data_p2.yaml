@@ -1,0 +1,12 @@
+- test_case_id: TC03
+  priority: P2
+  uri: /films/999
+  expected_status_code: 404
+- test_case_id: TC04
+  priority: P2
+  uri: /films/-1
+  expected_status_code: 404
+- test_case_id: TC05
+  priority: P2
+  uri: /films/7
+  expected_status_code: 404

@@ -1,0 +1,14 @@
+- test_case_id: TC06
+  priority: P3
+  uri: /films/invalid-id
+  expected_status_code: 404
+- test_case_id: TC07
+  priority: P3
+  method: post
+  uri: /films/1
+  expected_status_code: 405
+- test_case_id: TC08
+  priority: P3
+  method: put
+  uri: /films
+  expected_status_code: 405

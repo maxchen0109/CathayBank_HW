@@ -6,20 +6,20 @@ def print_triangle(n):
     邏輯說明：
     1. 先判斷輸入值是否為整數型別或是大於1，若是，才能進行空心正三角形的輸出
     2. 列印空格，為每行建立所需的縮排，每行的縮排會遞減
-    3. 決定是否在每行中的每個位置列印星號或空格。 在開頭、結尾或最後一行印出一個星號。否則，將列印一個空格。
+    3. 透過 prev 變數來決定非頭、尾行的空格數量。
     """
-    if type(n) != int or n <= 1:
+    if not isinstance(n, int) or n <= 1:
         print("輸入值須為整數且大於1")
     else:
+        prev = 0
         for i in range(n):
-            for j in range(n - i - 1):
-                print(" ", end="")
-            for k in range(2 * i + 1):
-                if k == 0 or k == 2 * i or i == n - 1:
-                    print("*", end="")
-                else:
-                    print(" ", end="")
-            print()
+            if i == 0:
+                print(''.join([' ' * (n - i - 1), ' *', ' ' * (i)]))
+            elif i < n-1:
+                print(''.join([' ' * (n - i - 1), ' *', ' ' * (i + prev), '*']))
+                prev += 1
+            else:
+                print(''.join([' *' * (i +1)]))
 
 
 def sort_numbers(numbers):
@@ -48,7 +48,7 @@ def sort_numbers(numbers):
 # 測試案例：
 print_triangle(1)
 print_triangle(3)
-print_triangle(4)
+print_triangle(6)
 print_triangle("3")
 print_triangle("a")
 sort_numbers("417324689435")
